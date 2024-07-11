@@ -1,0 +1,26 @@
+{% extends 'base.html'%}
+
+{% block body %}
+<div class="container"></div>
+    {% for item in items %}
+    <div class="row">
+        <div class="col-md-3 offset-md-2">
+            <img src="{{item.item_url}} justify-content-center " alt="">
+        </div>
+        <div class="col-md-2 align-self-center">
+
+            <h2>
+                <a href="{% url 'food:detail' item.id%}"> {{ item.item_name }} </a>
+            </h2>
+            <h3> price : {{item.item_price}}$</h3>
+        </div>
+        <div class="col-md-2">
+            <a href="{% url 'food:detail' item.id %}" class="btn btn-success"> Details</a>
+            <a href="{% url 'food:edit' item.id %}" class="btn btn-light"> Edit</a>
+            <a href="{% url 'food:delete' item.id %}" class="btn btn-danger"> Delete</a>
+        </div>
+    
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
